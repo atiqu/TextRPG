@@ -1,3 +1,18 @@
+'''
+TODO:
+- Base class for Character which will be inherited by the Player and Enemy class
+- Different types of Players and Enemies
+- Range of damages instead of a fixed number for different attacks
+- An inventory for the Player which can store items that can be used later on.
+
+
+
+
+
+'''
+
+
+
 import random
 
 
