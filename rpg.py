@@ -5,23 +5,17 @@ TODO:
 - Range of damages instead of a fixed number for different attacks
 - An inventory for the Player which can store items that can be used later on.
 
-
-
-
-
 '''
-
-
 
 import random
 
+damages = {"Punch": 20, "Kick": 40, "Fire": 50, "Magic": 30}
+prompt = "> "
 
 # Represent the player
 class Player:
     moves = {1: "Up", 2: "Down", 3: "Left", 4: "Right"}
     attacks = {1: "Punch", 2: "Kick", 3: "Fire", 4: "Magic"}
-    damages = {"Punch": 20, "Kick": 40, "Fire": 50, "Magic": 30}
-    prompt = "> "
 
     def __init__(self, health):
         self.health = health
@@ -33,7 +27,7 @@ class Player:
         print "Choose a direction:"
         for key in self.moves:
             print "%d. %s" % (key, self.moves[key])
-        user_dir = int(raw_input(self.prompt))
+        user_dir = int(raw_input(prompt))
         encounter = random.choice(self.moves.keys())
         if user_dir == encounter:
             print "You encountered an enemy!"
@@ -46,9 +40,9 @@ class Player:
         print "Choose an attack:"
         for key in self.attacks:
             print "%d. %s" % (key, self.attacks[key])
-        chosen = int(raw_input(self.prompt))
+        chosen = int(raw_input(prompt))
         attack = self.attacks[chosen]
-        damage = self.damages[attack]
+        damage = damages[attack]
         print "You used %s and did %d damage!" % (attack, damage)
         return damage
 
@@ -61,8 +55,6 @@ class Player:
 
 # Represent the enemy
 class Enemy:
-    damages = {"Punch": 20, "Kick": 40, "Fire": 50, "Magic": 30}
-    prompt = "> "
 
     def __init__(self, health):
         self.health = health
@@ -71,8 +63,8 @@ class Enemy:
         print "Enemy Health: %d" % self.health
 
     def attack(self):
-        attack = random.choice(self.damages.keys())
-        damage = self.damages[attack]
+        attack = random.choice(damages.keys())
+        damage = damages[attack]
         print "The enemy used %s and did %d damage!" % (attack, damage)
         return damage
 
